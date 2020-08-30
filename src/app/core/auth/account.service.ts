@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { SocialUser } from 'angularx-social-login';
 import { Observable, Subject } from 'rxjs';
 import { shareReplay, tap } from 'rxjs/operators';
+import { AUTHORITIES, SERVER_API_URL } from 'src/app/shared/constants';
 import { User } from 'src/app/shared/models/user.model';
-import { SERVER_API_URL, AUTHORITIES } from 'src/app/shared/constants';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -11,6 +12,8 @@ export class AccountService {
   private authenticated = false;
   private authenticationState = new Subject<any>();
   private accountCache$: Observable<User>;
+
+  private fbIdentity: SocialUser;
 
   constructor(
     private http: HttpClient
@@ -22,6 +25,10 @@ export class AccountService {
 
   fetch(): Observable<User> {
     return this.http.get<User>(SERVER_API_URL + '/user/info');
+  }
+
+  fetchFb(user: SocialUser): Observable<User> {
+    return this.http.post<User>(SERVER_API_URL + '/user/fb/info', user);
   }
 
   authenticate(identity) {
@@ -51,7 +58,13 @@ export class AccountService {
     }
 
     if (!this.accountCache$) {
-      this.accountCache$ = this.fetch().pipe(
+      let service;
+      if (this.fbIdentity) {
+        service = this.fetchFb(this.fbIdentity);
+      } else {
+        service = this.fetch();
+      }
+      this.accountCache$ = service.pipe(
         tap((account) => {
           if (account) {
             this.userIdentity = account;
@@ -66,6 +79,10 @@ export class AccountService {
       );
     }
     return this.accountCache$;
+  }
+
+  authenticateFb(user: SocialUser) {
+      this.fbIdentity = user;
   }
 
   isAuthenticated(): boolean {

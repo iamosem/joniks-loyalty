@@ -118,3 +118,39 @@
   color: #fff;
   text-shadow: none;
 }
+
+.social-login {
+  width: 100%;
+  text-align: left;
+}
+
+.fb-login {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-image: url('../../assets/img/fb-logo.png');
+  background-size: cover;
+  background-position: center;
+
+  &:hover {
+    cursor: pointer;
+
+    -webkit-transform: scale(1.08);
+    -moz-transform: scale(1.08);
+    -o-transform: scale(1.08);
+    -ms-transform: scale(1.08);
+    transform: scale(1.08);
+
+    box-shadow: 0 2px 8px 0 rgba(166, 166, 166, 0.1);
+    -o-box-shadow: 0 2px 8px 0 rgba(166, 166, 166, 0.1);
+    -ms-box-shadow: 0 2px 8px 0 rgba(166, 166, 166, 0.1);
+    -moz-box-shadow: 0 2px 8px 0 rgba(166, 166, 166, 0.1);
+    -webkit-box-shadow: 0 2px 8px 0 rgba(166, 166, 166, 0.1);
+  }
+}

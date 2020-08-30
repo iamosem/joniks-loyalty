@@ -6,7 +6,6 @@ import { takeUntil } from 'rxjs/operators';
 import { Account } from 'src/app/shared/models/account.model';
 import { StateStorageService } from 'src/app/core/auth/state-storage.service';
 import { Router } from '@angular/router';
-import { SocialAuthService } from 'angularx-social-login';
 
 @Component({
   selector: 'app-main',
@@ -20,15 +19,13 @@ export class MainComponent implements OnInit, OnDestroy {
     private translateService: TranslateService,
     private router: Router,
     private stateStorageService: StateStorageService,
-    private accountService: AccountService,
-    private authService: SocialAuthService
+    private accountService: AccountService
   ) {
     this.translateService.setDefaultLang('en');
     this.translateService.use('en');
   }
 
   ngOnInit(): void {
-    this.subscribeToFbAuthEvents();
     this.subscribeToLoginEvents();
   }
 
@@ -46,12 +43,6 @@ export class MainComponent implements OnInit, OnDestroy {
           this.navigateToStoredUrl();
         }
       });
-  }
-
-  private subscribeToFbAuthEvents() {
-    this.authService.authState.subscribe((user) => {
-      console.error('@@@ loggedin: ', user);
-    });
   }
 
   private navigateToStoredUrl() {

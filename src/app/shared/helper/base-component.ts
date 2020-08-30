@@ -1,5 +1,6 @@
-import { OnDestroy, OnInit } from '@angular/core';
+import { OnDestroy, OnInit, Directive } from '@angular/core';
 
+@Directive()
 export class BaseComponent implements OnInit, OnDestroy {
   subscriptions: any[] = [];
 

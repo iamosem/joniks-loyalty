@@ -19,6 +19,18 @@ const LAYOUT_ROUTES = [navbarRoute, footerRoute, ...errorRoute];
         loadChildren: () =>
           import('./home/home.module').then((m) => m.HomeModule),
       },
+      {
+        path: 'user',
+        data: {
+          pageTitle: 'global.title',
+          authorities: ['ROLE_LAB', 'ROLE_ADMIN']
+        },
+        canActivate: [UserRouteAccessService],
+        loadChildren: () =>
+          import('./user/user.module').then(
+            (m) => m.UserModule
+          ),
+      },
       ...LAYOUT_ROUTES,
     ]),
   ],

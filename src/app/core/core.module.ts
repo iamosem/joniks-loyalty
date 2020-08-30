@@ -24,12 +24,6 @@ import { AccountService } from './auth/account.service';
 import { SocialLoginModule, SocialAuthServiceConfig, FacebookLoginProvider } from 'angularx-social-login';
 import { FB_APP_ID } from '../shared/constants';
 
-const FB_LOGIN_OPTS = {
-  scope: 'pages_messaging, email',
-  return_scopes: true,
-  enable_profile_selector: true
-};
-
 @NgModule({
   imports: [
     HttpClientModule,
@@ -52,11 +46,11 @@ const FB_LOGIN_OPTS = {
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
-        autoLogin: false,
+        autoLogin: true,
         providers: [
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider(FB_APP_ID, FB_LOGIN_OPTS),
+            provider: new FacebookLoginProvider(FB_APP_ID),
           }
         ],
       } as SocialAuthServiceConfig

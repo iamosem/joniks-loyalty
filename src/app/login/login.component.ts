@@ -7,6 +7,7 @@ import { map, finalize } from 'rxjs/operators';
 import { User } from '../shared/models/user.model';
 import { UserService } from '../user/user.service';
 import { SocialAuthService, FacebookLoginProvider } from 'angularx-social-login';
+import { AccountService } from '../core/auth/account.service';
 
 @Component({
   selector: 'app-login',
@@ -28,9 +29,11 @@ export class LoginComponent extends BaseComponent {
     private userService: UserService,
     private router: Router,
     private translateService: TranslateService,
-    private authService: SocialAuthService
+    private authService: SocialAuthService,
+    private accountService: AccountService
   ) {
     super();
+    this.subscribeToFbAuthEvents();
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
@@ -42,6 +45,15 @@ export class LoginComponent extends BaseComponent {
     if (this.errorInverval) {
       clearInterval(this.errorInverval);
     }
+  }
+
+  private subscribeToFbAuthEvents() {
+    this.authService.authState.subscribe((user) => {
+      if (user) {
+        this.accountService.authenticateFb(user);
+        this.router.navigate(['/']);
+      }
+    });
   }
 
   signInWithFB(): void {

@@ -24,6 +24,13 @@
                 {{ 'login.action.signIn' | translate }}
               </button>
             </p>
+            <div class="social-login">
+              <p class="text-muted" style="margin-left: 85px;">--- or ---</p>
+              <span class="btn btn-default" style="height: 40px; max-width: 206px;" (click)="signInWithFB()">
+                <span class="fb-login"></span>
+                <span  style="height: 100%; display: inline-block; vertical-align: top; line-height: 40px; padding: 0 5px;">{{ 'login.action.signInWithFacebook' | translate }}</span>
+              </span>
+            </div>
           </div>
         </form>
       </div>

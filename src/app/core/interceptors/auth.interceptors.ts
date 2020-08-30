@@ -58,7 +58,7 @@ export class AuthInterceptor implements HttpInterceptor {
               this.storageService.storeUrl(this.router.routerState.snapshot.url);
               this.storageService.removeSessionToken();
               this.accountService.authenticate(null);
-              if (err.url.includes('user/info')) {
+              if (err.url.includes('user/info') || err.url.includes('user/fb/info')) {
                 this.router.navigateByUrl('login-page');
               } else {
                 this.router.navigateByUrl('accessdenied');

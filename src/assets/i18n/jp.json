@@ -118,7 +118,8 @@
       "password": "Password"
     },
     "action": {
-      "signIn": "Sign in"
+      "signIn": "Sign in",
+      "signInWithFacebook": "Sign in with Facebook"
     },
     "error": {
       "loginFailed": "Login failed. Please check your username or password."
