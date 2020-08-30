@@ -1,0 +1,876 @@
+{
+  "global": {
+    "title": "Joniks<br>Tea & Coffee",
+    "appName": "Loyalty Points",
+    "menu": {
+      "home": "Home",
+      "dataGroup": "Data Groups",
+      "patient": "Patients",
+      "test": "Tests",
+      "user": "Users"
+    },
+    "validation": {
+      "required": "This field is required.",
+      "minlength": "This field is required to be at least {{ min }} characters.",
+      "maxlength": "This field cannot be longer than {{ max }} characters.",
+      "min": "This field should be at least {{ min }}.",
+      "max": "This field cannot be more than {{ max }}.",
+      "minbytes": "This field should be at least {{ min }} bytes.",
+      "maxbytes": "This field cannot be more than {{ max }} bytes.",
+      "pattern": "This field should follow pattern for {{ pattern }}.",
+      "number": "This field should be a number.",
+      "datetimelocal": "This field should be a date and time.",
+      "patternLogin": "This field can only contain letters, digits and e-mail addresses.",
+      "email": "This field should be a valid email address format.",
+      "passwordNotMatch": "Passwords do not match.",
+      "invalidPassword": "Password must contain at least 8 characters with at least 1 uppercase character and at least 1 number.",
+      "valueIncorrect": "Please double check this value."
+    },
+    "error": {
+      "title": "Oops, something is wrong",
+      "internalServerError": "Internal server error.",
+      "server.not.reachable": "Internal server error.",
+      "http": {
+        "403": "You are not authorized to access this page.",
+        "404": "The page you want to view does not exist."
+      }
+    },
+    "notification": {
+      "title": "Notification",
+      "patientInfo": {
+        "title": "Patient Information",
+        "barcodeSerial": "Barcode Serial",
+        "name": "Patient Name",
+        "birthDate": "Birth Date",
+        "flightDetails": "Flight Details",
+        "testResult": "Test Result",
+        "noPatient": "No Corresponding Patient",
+        "testResultStatus": {
+          "notTested": "Not Tested",
+          "na": "Currently Testing",
+          "negative": "SARS-CoV-2 viral RNA not detected",
+          "positive": "SARS-CoV-2 viral RNA detected",
+          "equivocal": "Equivocal",
+          "pendingReRun": "Pending for Re-run",
+          "pendingReExtraction": "Pending for Re-extraction",
+          "pendingValidation": "Pending for Physician Validation"
+        }
+      },
+      "message": {
+        "tampered": "This QR Code is tampered!<br>Please report this incident right away.",
+        "found": "Patient for QR Code found.<br>This certificate belongs to:"
+      }
+    },
+    "action": {
+      "search": "Search",
+      "clear": "Clear",
+      "save": "Save",
+      "back": "Back",
+      "delete": "Delete",
+      "edit": "Edit",
+      "cancel": "Cancel",
+      "close": "Close",
+      "update": "Update",
+      "preview": "Preview",
+      "print": "Print",
+      "generate": "Generate",
+      "done": "Done",
+      "assign": "Assign",
+      "remove": "Remove",
+      "transfer": "Transfer",
+      "backToList": "Go back to List",
+      "editFields": "Edit Fields",
+      "lockFields": "Lock Fields",
+      "chooseFile": "Choose File",
+      "changeFile": "Change File",
+      "upload": "Upload",
+      "show": "Show",
+      "hide": "Hide",
+      "deactivate": "Deactivate",
+      "changePassword": "Change Password",
+      "signOut": "Sign Out"
+    },
+    "label": {
+      "searchFilter": "Search Filter",
+      "selectDefault": "--- Select ---",
+      "selectDefaultField": "--- Select {{ field }} ---",
+      "yes": "Yes",
+      "no": "No",
+      "unknown": "Unknown",
+      "modified": "Modified",
+      "rowActions": "Row Actions",
+      "format": "format: {{ format }}",
+      "pleaseSpecify": "Please specify {{ field }}",
+      "extended": "Extended"
+    },
+    "pagination": {
+      "page": "Page",
+      "pageInfo": "Showing {{ start }} - {{ end }} of {{ totalItems }}",
+      "size": "Size"
+    },
+    "copyright": "&copy; 2020 Joniks Tea & Coffee. All rights reserved."
+  },
+  "login": {
+    "title": "Sign in",
+    "instructions": "Please sign in to view your loyalty points.",
+    "field": {
+      "username": "Username",
+      "password": "Password"
+    },
+    "action": {
+      "signIn": "Sign in"
+    },
+    "error": {
+      "loginFailed": "Login failed. Please check your username or password."
+    }
+  },
+  "changePassword": {
+    "title": "Change your password",
+    "instructions": "You will be logged out once you have succesfully changed your password.",
+    "field": {
+      "newPassword": "New Password",
+      "repeatPassword": "Repeat New Password"
+    },
+    "action": {
+      "changePassword": "Change Password"
+    },
+    "error": {
+      "failed": "Change Password failed. Please try again later."
+    }
+  },
+  "dataGroup": {
+    "list": {
+      "title": "Data Group List",
+      "field": {
+        "name": "Data Group Name",
+        "demographicCount": "Demographic Count",
+        "specimenCount": "Specimen Count",
+        "createdDate": "Created Date",
+        "createdBy": "Created By",
+        "status": "Status",
+        "createdDateFrom": "Creation Date From",
+        "createdDateTo": "Creation Date To",
+        "barcodeSerial": "Barcode Serial"
+      },
+      "status": {
+        "incomplete": "Incomplete",
+        "complete": "Complete"
+      },
+      "action": {
+        "addDataGroup": "Add Data Group",
+        "deleteSelected": "Delete Selected"
+      }
+    },
+    "add": {
+      "title": "New Data Group",
+      "field": {
+        "name": "Data Group Name",
+        "barcodeCount": "Barcode Count"
+      }
+    },
+    "delete": {
+      "title": "Delete Data Group",
+      "question": "Are you sure you want to delete the selected Data Group?",
+      "batch": {
+        "title": "Delete Multiple Data Groups",
+        "question": "Are you sure you want to delete the selected {{ count }} Data Groups?"
+      }
+    },
+    "edit": {
+      "title": "Edit Data Group",
+      "field": {
+        "name": "Data Group Name",
+        "createdDate": "Created Date",
+        "createdBy": "Created By",
+        "status": "Status",
+        "modifiedBy": "Modified By",
+        "modifiedDate": "Modified Date"
+      },
+      "status": {
+        "incomplete": "Incomplete",
+        "complete": "Complete"
+      },
+      "action": {
+        "scanDemographic": "Scan Demographic",
+        "scanSpecimen": "Scan Specimen",
+        "printDataGroup": "Print Data Group",
+        "backToList": "Go back to List",
+        "generateBarcodes": "Generate Barcodes"
+      },
+      "scanDemographic": {
+        "title": "Scan Demographic QR Code",
+        "instructions": "Please scan QR Code"
+      },
+      "scanSpecimen": {
+        "title": "Scan Specimen Barcode",
+        "instructions": "Please scan Barcode"
+      }
+    }
+  },
+  "barcode": {
+    "generate": {
+      "title": "Generate Barcodes",
+      "instructions": "Generate {{ min }} to {{ max }} barcodes.",
+      "field": {
+        "count": "Count"
+      }
+    },
+    "print": {
+      "title": "Print Barcodes By Range",
+      "instructions": "Print barcodes with ids ranging 'from' until 'to'.",
+      "field": {
+        "from": "From",
+        "to": "To"
+      }
+    },
+    "preview": {
+      "title": "Barcode Preview",
+      "demographicBarcode": "Demographic QR Code",
+      "specimenBarcode": "Specimen Barcode",
+      "action": {
+        "printDemographic": "Print Demographic QR Code",
+        "printSpecimen": "Print Specimen Barcode"
+      }
+    },
+    "transfer": {
+      "title": "Barcode Transfer",
+      "field": {
+        "dataGroup": "Select New Data Group"
+      }
+    },
+    "transferBatch": {
+      "title": "Transfer Selected Barcodes",
+      "field": {
+        "dataGroup": "Select New Data Group"
+      }
+    },
+    "statusUpdate": {
+      "title": "Specimen Status Update",
+      "field": {
+        "status": "New Status",
+        "remarks": "Remarks"
+      },
+      "status": {
+        "testing": "Testing",
+        "discarded": "Discarded",
+        "stored": "Stored"
+      }
+    },
+    "list": {
+      "title": "Barcodes",
+      "total": "Total",
+      "totalScannedDemographic": "Total Scanned Demographic",
+      "totalScannedSpecimen": "Total Scanned Specimen",
+      "totalTested": "Total Tested",
+      "field": {
+        "serial": "Serial Code",
+        "demographicScanned": "Demographic Scanned",
+        "specimenScanned": "Specimen Scanned",
+        "demographicScanDate": "Demographic Scan Date",
+        "specimenScanDate": "Specimen Scan Date",
+        "status": "Specimen Status",
+        "createdDate": "Created Date",
+        "createdBy": "Created By",
+        "type": "Type",
+        "testResultStatus": "Test Result Status",
+        "patientInfo": "Patient Info"
+      },
+      "action": {
+        "batchActions": "Batch Actions",
+        "printSelected": "Print Selected Barcodes",
+        "printRange": "Print Barcode Range",
+        "updateStatus": "Update Status",
+        "transferSelected": "Transfer Selected Barcodes"
+      },
+      "status": {
+        "testing": "Testing",
+        "discarded": "Discarded",
+        "stored": "Stored"
+      },
+      "testResultStatus": {
+        "notTested": "Not Tested",
+        "na": "Currently Testing",
+        "negative": "SARS-CoV-2 viral RNA not detected",
+        "positive": "SARS-CoV-2 viral RNA detected",
+        "equivocal": "Equivocal",
+        "pendingReRun": "Pending for Re-run",
+        "pendingReExtraction": "Pending for Re-extraction",
+        "pendingValidation": "Pending for Physician Validation"
+      }
+    }
+  },
+  "patient": {
+    "list": {
+      "title": "Patient List",
+      "field": {
+        "serial": "Serial Code",
+        "name": "Patient Name",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "age": "Age",
+        "sex": "Sex",
+        "birthDate": "Birth Date",
+        "contactNumber": "Mobile No",
+        "arrivalDate": "Arrival Date",
+        "flightDetails": "Flight Details",
+        "accessionNo": "Accession No",
+        "laboratoryNo": "Laboratory",
+        "collectionDate": "Specimen Scan Date",
+        "createdDate": "Created Date",
+        "createdBy": "Created By",
+        "specimenCollectionDate": "Specimen Collection Date",
+        "specimenReceipt": "Specimen Scan Date",
+        "dateReleased": "Result Released Date",
+        "dateTested": "Date Tested",
+        "testResultStatus": "Test Result Status",
+        "dataGroup": "Data Group",
+        "type": "Type",
+        "imported": "Imported"
+      },
+      "action": {
+        "batchActions": "Batch Actions",
+        "addPatientInfo": "Add Patient Info",
+        "deleteSelected": "Delete Selected",
+        "printSearch": "Print Test Results",
+        "printDohReport": "Print DOH Report",
+        "printSalesReport": "Print Sales Report",
+        "uploadDemographic": "Upload Demographic",
+        "generatePatientCertificate": "Generate Patient Certificate",
+        "generatePhilHealthForm": "Generate PhilHealth Form",
+        "validateCertificate": "Validate Certificate"
+      },
+      "imported": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "type": {
+        "outPatient": "Out Patient",
+        "owwa": "OWWA",
+        "others": "Others"
+      },
+      "status": {
+        "notTested": "Not Tested",
+        "na": "Currently Testing",
+        "negative": "SARS-CoV-2 viral RNA not detected",
+        "positive": "SARS-CoV-2 viral RNA detected",
+        "equivocal": "Equivocal",
+        "pending": "Pending",
+        "pendingReRun": "Pending for Re-run",
+        "pendingReExtraction": "Pending for Re-extraction",
+        "pendingValidation": "Pending for Physician Validation"
+      },
+      "sex": {
+        "female": "Female",
+        "male": "Male"
+      },
+      "validateCertificate": {
+        "title": "Validate Certificate",
+        "instructions": "Please scan QR Code"
+      },
+      "printCertificate": {
+        "title": "Generate Patient Certificate/s",
+        "field": {
+          "requestedBy": "Requested By"
+        }
+      }
+    },
+    "add": {
+      "title": "New Patient",
+      "field": {
+        "barcodeSerial": "Barcode Serial",
+        "type": "Type",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "region": "Region",
+        "province": "Province",
+        "municipality": "Municipality",
+        "barangay": "Barangay",
+        "street": "Street Name",
+        "age": "Age",
+        "sex": "Sex",
+        "birthDate": "Birth Date",
+        "email": "Email",
+        "contactNumber": "Mobile Number",
+        "arrivalDate": "Arrival Date",
+        "flightDetails": "Flight Details",
+        "accessionNo": "Accession Number",
+        "laboratoryNo": "Laboratory",
+        "specimenScanDate": "Specimen Scan Date",
+        "specimenCollectionDate": "Specimen Collection Date",
+        "civilStatus": "Civil Status",
+        "homePhoneNo": "Home Phone Number",
+        "houseNo": "House Number",
+        "curRegion": "Current Region",
+        "curProvince": "Current Province",
+        "curMunicipality": "Current Municipality",
+        "curBarangay": "Current Barangay",
+        "curStreet": "Current Street Name",
+        "alternateEmail": "Other Email",
+        "curContactNumber": "Current Mobile Number",
+        "curHomePhoneNo": "Current Home Phone Number",
+        "curHouseNo": "Current House Number",
+        "employerName": "Employer Name",
+        "occupation": "Occupation",
+        "placeOfWork": "Place of Work",
+        "wrkHouseNo": "Work House Number",
+        "wrkStreetAddress": "Work Street Address",
+        "wrkMunicipality": "Work Municipality",
+        "wrkProvince": "Work Province",
+        "wrkCountry": "Work Country",
+        "wrkPhoneNo": "Work Phone Number",
+        "wrkMobileNumber": "Work Mobile Number",
+        "travelHistory": "History of travel/visit/work in other countries with a known COVID-19 transmission",
+        "travelHistoryNote": "14 days before the onset of your signs and symptoms",
+        "portOfExit": "Port (Country) of Exit",
+        "vessel": "Airline/Sea Vessel",
+        "departureDate": "Date of Departure",
+        "exposureHistory": "History of exposure to known COVID-19 case",
+        "exposureHistoryNote": "14 days before the onset of signs and symptoms",
+        "exposureDate": "Date of contact with known COVID-19 case",
+        "exposedToPlace": "Have you been in a place with a known COVID-19 transmission",
+        "exposedToPlaceNote": "14 days before the onset of signs and symptoms",
+        "exposedToPlaceType": "Place",
+        "exposedToPlaceTypeOthers": "Others, specify type",
+        "exposedToPlaceDate": "Date when you have been in that place",
+        "exposedToPlaceName": "Name of the place",
+        "exposedToPlaceContact": "List the names of persons who were with you during this (these) occasion(s) and their contact numbers",
+        "exposedToPlaceContactName": "Contact Name",
+        "exposedToPlaceContactNumber": "Contact Number",
+        "nationality": "Nationality",
+        "passportNo": "Passport Number",
+        "philHealthNo": "PhilHealth Number"
+      },
+      "type": {
+        "outPatient": "Out Patient",
+        "owwa": "OWWA",
+        "others": "Others"
+      },
+      "sex": {
+        "female": "Female",
+        "male": "Male"
+      },
+      "civilStatus": {
+        "single": "Single",
+        "married": "Married",
+        "widowed": "Widowed",
+        "anulled": "Anulled",
+        "divorced": "Divorced",
+        "legallySeparated": "Legally Separated"
+      },
+      "exposedToPlaceType": {
+        "workplace": "Workplace",
+        "socialGathering": "Social Gathering",
+        "healthFacility": "Health Facility",
+        "religiousGathering": "Religious Gathering",
+        "others": "Others"
+      },
+      "validation": {
+        "barcodeExists": "This barcode exists.",
+        "barcodeDoesNotExist": "This barcode does NOT exist."
+      }
+    },
+    "delete": {
+      "title": "Delete Patient",
+      "question": "Are you sure you want to delete the selected Patient?",
+      "batch": {
+        "title": "Delete Multiple Patients",
+        "question": "Are you sure you want to delete the selected {{ count }} Patients?"
+      }
+    },
+    "edit": {
+      "title": "Edit Patient Profile",
+      "field": {
+        "barcodeSerial": "Barcode Serial",
+        "type": "Type",
+        "firstName": "First Name",
+        "middleName": "Middle Name",
+        "lastName": "Last Name",
+        "region": "Region",
+        "province": "Province",
+        "municipality": "Municipality",
+        "barangay": "Barangay",
+        "street": "Street Name",
+        "age": "Age",
+        "sex": "Sex",
+        "birthDate": "Birth Date",
+        "email": "Email",
+        "contactNumber": "Mobile Number",
+        "arrivalDate": "Arrival Date",
+        "flightDetails": "Flight Details",
+        "accessionNo": "Accession Number",
+        "laboratoryNo": "Laboratory",
+        "modifiedBy": "Modified By",
+        "modifiedDate": "Modified Date",
+        "specimenScanDate": "Specimen Scan Date",
+        "specimenCollectionDate": "Specimen Collection Date",
+        "specimenType": "Specimen Type",
+        "specimenStatus": "Specimen Status",
+        "specimenRemarks": "Specimen Remarks",
+        "civilStatus": "Civil Status",
+        "homePhoneNo": "Home Phone Number",
+        "houseNo": "House Number",
+        "curRegion": "Current Region",
+        "curProvince": "Current Province",
+        "curMunicipality": "Current Municipality",
+        "curBarangay": "Current Barangay",
+        "curStreet": "Current Street Name",
+        "alternateEmail": "Other Email",
+        "curContactNumber": "Current Mobile Number",
+        "curHomePhoneNo": "Current Home Phone Number",
+        "curHouseNo": "Current House Number",
+        "employerName": "Employer Name",
+        "occupation": "Occupation",
+        "placeOfWork": "Place of Work",
+        "wrkHouseNo": "Work House Number",
+        "wrkStreetAddress": "Work Street Address",
+        "wrkMunicipality": "Work Municipality",
+        "wrkProvince": "Work Province",
+        "wrkCountry": "Work Country",
+        "wrkPhoneNo": "Work Phone Number",
+        "wrkMobileNumber": "Work Mobile Number",
+        "travelHistory": "History of travel/visit/work in other countries with a known COVID-19 transmission",
+        "travelHistoryNote": "14 days before the onset of your signs and symptoms",
+        "portOfExit": "Port (Country) of Exit",
+        "vessel": "Airline/Sea Vessel",
+        "departureDate": "Date of Departure",
+        "exposureHistory": "History of exposure to known COVID-19 case",
+        "exposureHistoryNote": "14 days before the onset of signs and symptoms",
+        "exposureDate": "Date of contact with known COVID-19 case",
+        "exposedToPlace": "Have you been in a place with a known COVID-19 transmission",
+        "exposedToPlaceNote": "14 days before the onset of signs and symptoms",
+        "exposedToPlaceType": "Place",
+        "exposedToPlaceTypeOthers": "Others, specify type",
+        "exposedToPlaceDate": "Date when you have been in that place",
+        "exposedToPlaceName": "Name of the place",
+        "exposedToPlaceContact": "List the names of persons who were with you during this (these) occasion(s) and their contact numbers",
+        "exposedToPlaceContactName": "Contact Name",
+        "exposedToPlaceContactNumber": "Contact Number",
+        "nationality": "Nationality",
+        "passportNo": "Passport Number",
+        "philHealthNo": "PhilHealth Number"
+      },
+      "type": {
+        "outPatient": "Out Patient",
+        "owwa": "OWWA",
+        "others": "Others"
+      },
+      "specimenType": {
+        "opsAndNps": "OPS & NPS",
+        "nps": "NPS",
+        "ops": "OPS",
+        "serum": "Serum",
+        "eta": "ETA",
+        "ta": "TA",
+        "sputum": "Sputum",
+        "stool": "Stool",
+        "blood": "Blood",
+        "environmentalSample": "Environmental Sample",
+        "ngt": "NGT",
+        "etaSwabInVtmUtm": "ETA Swab in VTM/UTM",
+        "other": "Other"
+      },
+      "specimenStatus": {
+        "testing": "Testing",
+        "discarded": "Discarded",
+        "stored": "Stored"
+      },
+      "sex": {
+        "female": "Female",
+        "male": "Male"
+      },
+      "civilStatus": {
+        "single": "Single",
+        "married": "Married",
+        "widowed": "Widowed",
+        "anulled": "Anulled",
+        "divorced": "Divorced",
+        "legallySeparated": "Legally Separated"
+      },
+      "exposedToPlaceType": {
+        "workplace": "Workplace",
+        "socialGathering": "Social Gathering",
+        "healthFacility": "Health Facility",
+        "religiousGathering": "Religious Gathering",
+        "others": "Others"
+      },
+      "validation": {
+        "barcodeExists": "This barcode exists.",
+        "barcodeDoesNotExist": "This barcode does NOT exist."
+      },
+      "payment": {
+        "title": "Payment Info",
+        "field": {
+          "paymentStatus": "Payment Status",
+          "paymentAmount": "Payment Amount",
+          "paymentType": "Payment Type",
+          "paymentDate": "Payment Date",
+          "paidAmount": "Paid Amount",
+          "paymentReceipt": "Payment Receipt",
+          "paymentRemarks": "Payment Remarks"
+        },
+        "paymentStatus": {
+          "unpaid": "Unpaid",
+          "withBalance": "With Balance",
+          "paid": "Paid"
+        },
+        "paymentType": {
+          "cash": "Cash",
+          "credit": "Credit",
+          "check": "Check"
+        }
+      },
+      "testResult": {
+        "list": {
+          "title": "Test Results",
+          "field": {
+            "date": "Date",
+            "test": "Test",
+            "location": "Location",
+            "status": "Status",
+            "result": "Result",
+            "remarks": "Remarks"
+          },
+          "status": {
+            "new": "New",
+            "ongoing": "Ongoing",
+            "finished": "Finished"
+          },
+          "result": {
+            "notTested": "Not Tested",
+            "na": "Currently Testing",
+            "negative": "SARS-CoV-2 viral RNA not detected",
+            "positive": "SARS-CoV-2 viral RNA detected",
+            "equivocal": "Equivocal",
+            "pending": "Pending",
+            "pendingReRun": "Pending for Re-run",
+            "pendingReExtraction": "Pending for Re-extraction",
+            "pendingValidation": "Pending for Physician Validation"
+          },
+          "action": {
+            "updateStatus": "Update Status"
+          },
+          "statusUpdate": {
+            "title": "Update Test Result"
+          }
+        }
+      }
+    }
+  },
+  "testGroup": {
+    "list": {
+      "title": "Test Group List",
+      "field": {
+        "serial": "Serial Code",
+        "name": "Name",
+        "type": "Type",
+        "status": "Status",
+        "wellsCount": "Wells Count",
+        "createdDate": "Created Date",
+        "createdBy": "Created By",
+        "createdDateFrom": "Creation Date From",
+        "createdDateTo": "Creation Date To"
+      },
+      "action": {
+        "createTestGroup": "Create Test Group",
+        "printManifest": "Print Manifest",
+        "printListView": "Print List View",
+        "deleteSelected": "Delete Selected"
+      },
+      "type": {
+        "extraction": "Extraction Template",
+        "test": "PCR Template"
+      },
+      "status": {
+        "new": "New",
+        "ongoing": "Ongoing",
+        "finished": "Finished"
+      }
+    },
+    "delete": {
+      "title": "Delete Test Group",
+      "question": "Are you sure you want to delete the selected Test Group?",
+      "batch": {
+        "title": "Delete Multiple Test Groups",
+        "question": "Are you sure you want to delete the selected {{ count }} Test Groups?"
+      }
+    },
+    "edit": {
+      "title": "Edit Test Group",
+      "field": {
+        "name": "Test Name",
+        "type": "Type",
+        "createdDate": "Created Date",
+        "createdBy": "Created By",
+        "status": "Status",
+        "comment": "Comment",
+        "modifiedBy": "Modified By",
+        "modifiedDate": "Modified Date"
+      },
+      "type": {
+        "extraction": "Extraction Template",
+        "test": "PCR Template"
+      },
+      "status": {
+        "new": "New",
+        "ongoing": "Ongoing",
+        "finished": "Finished"
+      },
+      "testEntry": {
+        "negativeControl1": "Negative Control 1",
+        "negativeControl2": "Negative Control 2",
+        "positiveControl1": "Positive Control 1",
+        "positiveControl2": "Positive Control 2",
+        "scan": {
+          "title": "Scan Specimen Barcode",
+          "instructions": "Please scan Barcode",
+          "instructionsWithLocation": "Please scan Barcode for {{ location }}",
+          "instructionsComment": "Please Enter Comment",
+          "instructionsCommentWithLocation": "Please Enter Comment for {{ location }}",
+          "comment": {
+            "instructions": "The specimen is already assigned to this test group, please enter a comment if you wish to continue",
+            "action": {
+              "updateComment": "Update Comment"
+            }
+          },
+          "patientInfo": {
+            "title": "Current Patient Information",
+            "barcodeSerial": "Barcode Serial",
+            "name": "Patient Name",
+            "birthDate": "Birth Date",
+            "flightDetails": "Flight Details",
+            "noPatient": "No Corresponding Patient"
+          }
+        },
+        "delete": {
+          "title": "Remove Specimen",
+          "titleWithLocation": "Remove Specimen for {{ location }}",
+          "question": "Are you sure you want to remove the selected specimen?",
+          "questionWithLocation": "Are you sure you want to remove the selected specimen on {{ location }}?"
+        },
+        "statusUpdate": {
+          "title": "Update Test Status",
+          "titleWithLocation": "Update Test Status for {{ location }}",
+          "patientInfo": {
+            "title": "Current Patient Information",
+            "barcodeSerial": "Barcode Serial",
+            "name": "Patient Name",
+            "birthDate": "Birth Date",
+            "flightDetails": "Flight Details",
+            "noPatient": "No Corresponding Patient"
+          },
+          "status": {
+            "notTested": "Not Tested",
+            "na": "Currently Testing",
+            "negative": "SARS-CoV-2 viral RNA not detected",
+            "positive": "SARS-CoV-2 viral RNA detected",
+            "equivocal": "Equivocal",
+            "pending": "Pending",
+            "pendingReRun": "Pending for Re-run",
+            "pendingReExtraction": "Pending for Re-extraction",
+            "pendingValidation": "Pending for Physician Validation"
+          },
+          "comment": "Enter remarks..."
+        },
+        "statusBatchUpdate": {
+          "title": "Batch Update Test Status",
+          "status": {
+            "notTested": "Not Tested",
+            "na": "Currently Testing",
+            "negative": "SARS-CoV-2 viral RNA not detected",
+            "positive": "SARS-CoV-2 viral RNA detected",
+            "equivocal": "Equivocal",
+            "pending": "Pending",
+            "pendingReRun": "Pending for Re-run",
+            "pendingReExtraction": "Pending for Re-extraction",
+            "pendingValidation": "Pending for Physician Validation"
+          },
+          "comment": "Enter remarks..."
+        }
+      },
+      "manifestInfo": "Manifest Info",
+      "action": {
+        "printManifest": "Print Manifest",
+        "printListView": "Print List View",
+        "printTestResult": "Print Test Result",
+        "updateStatusSelected": "Update Status of Selected",
+        "clearSelectedLocations": "Clear Selected Locations"
+      }
+    },
+    "add": {
+      "title": "Add Test Group",
+      "field": {
+        "name": "Test Name",
+        "type": "Type",
+        "duplicateFrom": "Duplicate From",
+        "fromPosition": "Staring from Extraction Position",
+        "toPosition": "To New PCR Position"
+      },
+      "type": {
+        "extraction": "Extraction Template",
+        "test": "PCR Template"
+      }
+    }
+  },
+  "user": {
+    "list": {
+      "title": "User List",
+      "field": {
+        "username": "Username",
+        "email": "Email",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "name": "Name",
+        "role": "Role",
+        "createdDate": "Created Date",
+        "createdBy": "Created By"
+      },
+      "role": {
+        "encoder": "Encoder",
+        "lab": "Lab Specialist",
+        "admin": "Administrator"
+      },
+      "action": {
+        "addUser": "Add User",
+        "deactivateUser": "Deactivate User"
+      }
+    },
+    "add": {
+      "title": "New User",
+      "field": {
+        "username": "Username",
+        "email": "Email",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "password": "Password",
+        "repeatPassword": "Repeat Password",
+        "role": "Role"
+      },
+      "role": {
+        "encoder": "Encoder",
+        "lab": "Lab Specialist",
+        "admin": "Administrator"
+      }
+    },
+    "edit": {
+      "title": "Edit User",
+      "field": {
+        "username": "Username",
+        "email": "Email",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "role": "Role"
+      },
+      "role": {
+        "encoder": "Encoder",
+        "lab": "Lab Specialist",
+        "admin": "Administrator"
+      }
+    },
+    "deactivate": {
+      "title": "Deactivate User",
+      "question": "Are you sure you want to deactivate the selected User?"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<ng-container *ngIf="form">
+    <div *ngIf="form.get(fieldName).invalid && (form.get(fieldName).dirty || form.get(fieldName).touched)"
+        style="margin-bottom: -8px;">
+        <small class="form-text text-danger font-size-xs" *ngIf="form.get(fieldName).errors.required">
+            {{ 'global.validation.required' | translate }}
+        </small>
+        <small class="form-text text-danger font-size-xs" *ngIf="form.get(fieldName).errors.email">
+            {{ 'global.validation.email' | translate }}
+        </small>
+        <small class="form-text text-danger font-size-xs" *ngIf="form.get(fieldName).errors.pattern">
+            {{ 'global.validation.invalidPassword' | translate }}
+        </small>
+        <ng-container *ngIf="validationParams">
+            <small class="form-text text-danger font-size-xs" *ngIf="form.get(fieldName).errors.min">
+                {{ 'global.validation.min' | translate: { min: validationParams['min'] } }}
+            </small>
+            <small class="form-text text-danger font-size-xs" *ngIf="form.get(fieldName).errors.max">
+                {{ 'global.validation.max' | translate:{ max: validationParams['max'] } }}
+            </small>
+            <small class="form-text text-danger font-size-xs" *ngIf="form.get(fieldName).errors.maxlength">
+                {{ 'global.validation.maxlength' | translate:{ max: validationParams['maxlength'] } }}
+            </small>
+        </ng-container>
+    </div>
+</ng-container>

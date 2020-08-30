@@ -1,0 +1,24 @@
+<div class="title-bar breadcrumb-container">
+  <div class="title">{{ CurrentPage | translate }}</div>
+    <ul *ngIf="!isBlacklisted() else emptyLinks" class="breadcrumb">
+      <li class="active">
+        <span routerLink="/home">{{ "global.menu.home" | translate }}</span>
+        <span *ngIf="breadcrumbs && breadcrumbs.length > 0" class="divider">/</span>
+      </li>
+      <ng-container *ngFor="let crumb of breadcrumbs; let i = index">
+        <li class="active">
+          <span *ngIf="crumb.url" [routerLink]="crumb.url">{{
+            crumb.label | translate
+          }}</span>
+          <span *ngIf="!crumb.url">{{ crumb.label | translate }}</span>
+          <span *ngIf="i < breadcrumbs.length - 1" class="divider">/</span>
+        </li>
+      </ng-container>
+    </ul>
+
+    <ng-template #emptyLinks>
+      <ul class="breadcrumb">
+        <li></li>
+      </ul>
+    </ng-template>
+</div>

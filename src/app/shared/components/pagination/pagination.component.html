@@ -1,0 +1,39 @@
+<div [class]="'pagination pagination-' + position">
+  <ul class="paging-list">
+    <li>
+      <div class="form-inline" style="margin-bottom: 20px;">
+        <label style="margin-right: 4px;">&nbsp;&nbsp;{{ "global.pagination.page" | translate }}</label>
+        <select class="input-mini" [(ngModel)]="pageHop" (ngModelChange)="emitPageHop()"
+          [attr.disabled]="isLoading ? '' : null">
+          <option *ngFor="let pageHop of PageHops" [value]="pageHop"> {{ pageHop }}</option>
+        </select>
+      </div>
+    </li>
+  </ul>
+  <ul style="margin-left: 10px;">
+    <li class="pointer" [ngClass]="{ 'disabled': page === 0 }"><a [class.disabled]="isLoading"
+        (click)="emitFirstPage()">&lt;&lt;</a>
+    </li>
+    <li class="pointer" [ngClass]="{ 'disabled': page === 0 }"><a [class.disabled]="isLoading"
+        (click)="emitPreviousPage()">&lt;</a>
+    </li>
+    <li class="active">
+      <a>{{ 'global.pagination.pageInfo' | translate:{ start: Start , end: End, totalItems: totalItems } }}</a>
+    </li>
+    <li class="pointer" [ngClass]="{ 'disabled': page === totalPages-1 }"><a [class.disabled]="isLoading"
+        (click)="emitNextPage()">&gt;</a></li>
+    <li class="pointer" [ngClass]="{ 'disabled': page === totalPages-1 }"><a [class.disabled]="isLoading"
+        (click)="emitLastPage()">&gt;&gt;</a></li>
+  </ul>
+  <ul class="paging-list">
+    <li>
+      <div class="form-inline" style="margin-bottom: 20px;">
+        <label style="margin-right: 4px;">&nbsp;&nbsp;{{ "global.pagination.size" | translate }}</label>
+        <select class="input-mini" [(ngModel)]="size" (ngModelChange)="emitSizeChange()"
+          [attr.disabled]="isLoading ? '' : null">
+          <option *ngFor="let size of paginationSizes" [value]="size">{{ size }}</option>
+        </select>
+      </div>
+    </li>
+  </ul>
+</div>

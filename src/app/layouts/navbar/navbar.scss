@@ -1,0 +1,66 @@
+@import "../../../assets/scss/app-colors";
+@import "../../../assets/scss/app-mixins";
+
+.app-nav .logo {
+  position: absolute;
+  color: $base-blue;
+  font-size: 24px;
+}
+
+.app-nav ul {
+  margin-bottom: 0;
+}
+
+.app-nav .list-inline-item > a {
+  color: $base-black;
+}
+
+.app-nav .list-inline-item > a:hover {
+  color: darken($base-black, 10%);
+}
+
+.app-nav .dropdown-menu {
+  margin-top: 20px;
+  box-shadow: 0 2px 8px 0 rgba(166, 166, 166, 0.1);
+}
+
+.user-container {
+  top: 20px;
+}
+
+.user-container .user-info {
+  text-shadow: 0px 1px 0px white;
+  color: $base-black;
+  font-size: 12px !important;
+  text-decoration: none !important;
+  vertical-align: bottom;
+  margin-right: 6px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none !important;
+    font-weight: 400 !important;
+    color: $base-black !important;
+  }
+}
+
+.user-container .user-info i {
+  vertical-align: text-bottom;
+  margin-right: 6px;
+}
+
+.dropdown-menu > li > a {
+  text-shadow: 0px 1px 0px white;
+  color: $base-black;
+  font-size: 12px !important;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none !important;
+    font-weight: 400 !important;
+    color: $base-white !important;
+    text-shadow: none;
+    font-size: 13px !important;
+  }
+}

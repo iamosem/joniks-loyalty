@@ -1,0 +1,75 @@
+<app-breadcrumbs [breadcrumbs]="breadcrumbs"></app-breadcrumbs>
+<div class="content container-fluid" id="home">
+  <div class="fieldset">
+    <div class="fieldset-title">
+      {{ "global.label.searchFilter" | translate }}
+    </div>
+    <div class="fieldset-content">
+      <form [formGroup]="searchForm" (ngSubmit)="search()">
+        <div class="row">
+          <div class="span4">
+            <div class="row-fluid">
+              <div class="form-inline pull-left" style="padding-right: 10px; margin-bottom: 20px;">
+                <span class="label label-clear">{{ 'user.list.field.username' | translate }}</span><br />
+                <input type="text" formControlName="username"
+                  placeholder="{{ 'user.list.field.username' | translate }}" />
+              </div>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="row-fluid">
+              <div class="form-inline pull-left" style="padding-right: 10px; margin-bottom: 20px;">
+                <span class="label label-clear">{{ 'user.list.field.email' | translate }}</span><br />
+                <input type="text" formControlName="email" placeholder="{{ 'user.list.field.email' | translate }}" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn" [attr.disabled]="PageLoading ? '' : null">
+          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isSearching"></span>
+          <span *ngIf="isSearching" style="margin-right: 8px;"></span>
+          <i *ngIf="!isSearching" class="icon icon-search"
+            style="margin-right: 4px;"></i>{{ "global.action.search" | translate }}</button>
+        <button type="reset" class="btn" [attr.disabled]="PageLoading ? '' : null"><i class="icon icon-refresh"
+            style="margin-right: 4px;"></i>{{ "global.action.clear" | translate }}</button>
+      </form>
+
+    </div>
+  </div>
+
+  <div class="clear-10"></div>
+
+  <ng-container *ngIf="userList && userList.length > 10">
+    <div class="clear"></div>
+    <div style="height: 50px;">
+      <div class="pull-left">
+        <button type="button" class="btn btn-standard" routerLink="add" [attr.disabled]="PageLoading ? '' : null"><i
+            class="icon-plus icon-white"
+            style="margin-right: 4px;"></i>{{ "user.list.action.addUser" | translate }}</button>
+      </div>
+      <app-pagination *ngIf="userList && userList.length > 0" [isLoading]="PageLoading" [page]="page"
+        [pageSize]="itemsPerPage" [totalPages]="TotalPages" position="right" [totalItems]="totalItems"
+        (pageChangeEmit)="loadPage($event)">
+      </app-pagination>
+    </div>
+  </ng-container>
+
+  <app-datatable [enableCheckbox]="false" [isLoading]="PageLoading" [data]="userList" [columnDef]="columnDef"
+    [columnActions]="columnActions" [collection]="collection" [templates]="{ nameTemplate: nameTemplate }"
+    (actionEmit)="action($event)">
+  </app-datatable>
+
+  <div class="pull-left">
+    <button type="button" class="btn btn-standard" routerLink="add" [attr.disabled]="PageLoading ? '' : null"><i
+        class="icon-plus icon-white"
+        style="margin-right: 4px;"></i>{{ "user.list.action.addUser" | translate }}</button>
+  </div>
+  <app-pagination *ngIf="userList && userList.length > 0" [isLoading]="PageLoading" [page]="page"
+    [pageSize]="itemsPerPage" [totalPages]="TotalPages" position="right" [totalItems]="totalItems"
+    (pageChangeEmit)="loadPage($event)">
+  </app-pagination>
+</div>
+
+<ng-template let-row="row" #nameTemplate>
+  {{ row.lastName | titlecase }}, {{ row.firstName | titlecase }} {{ row.middleName | titlecase }}
+</ng-template>

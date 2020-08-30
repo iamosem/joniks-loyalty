@@ -1,0 +1,37 @@
+<div *ngIf="!isBlacklisted()" class="navbar">
+  <div id="sub-menu-div" class="container-fluid" style="position: relative;">
+    <div class="pull-right">
+      <div class="user-container dropdown pull-right">
+        <a class="dropdown-toggle user-info" id="dLabel" role="button" data-toggle="dropdown">
+          <i class="icon-user icon-black"></i> {{ DisplayName }}
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a tabindex="-1" (click)="changePassword()">{{ 'global.action.changePassword' | translate }} </a></li>
+          <div class="divider"></div>
+          <li><a tabindex="-1" (click)="logout()"> {{ 'global.action.signOut' | translate }} </a></li>
+        </ul>
+      </div>
+    </div>
+    <span>
+      <a class="pull-left top-nav-img">
+        <img src="../../../assets/img/pccLOGO-ico.png" width="60" />
+      </a>
+    </span>
+    <span class="top-nav-bottom">
+      <ul class="nav nav-tabs container-fluid font-bold">
+        <li><a *appHasAnyAuthority="['ROLE_ENCODER', 'ROLE_LAB', 'ROLE_ADMIN']" id="sub-menu" routerLink="/data-group"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: false}">{{ 'global.menu.dataGroup' | translate }}</a></li>
+        <li><a *appHasAnyAuthority="['ROLE_ENCODER', 'ROLE_LAB', 'ROLE_ADMIN']" id="sub-menu" routerLink="/patient"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: false}">{{ 'global.menu.patient' | translate }}</a></li>
+        <li><a *appHasAnyAuthority="['ROLE_LAB', 'ROLE_ADMIN']" id="sub-menu" routerLink="/test"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: false}">{{ 'global.menu.test' | translate }}</a></li>
+        <li><a *appHasAnyAuthority="['ROLE_ADMIN']" id="sub-menu" routerLink="/user" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: false}">{{ 'global.menu.user' | translate }}</a></li>
+      </ul>
+    </span>
+  </div>
+</div>

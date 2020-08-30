@@ -1,0 +1,75 @@
+<table class="table table-bordered table-condensed table-striped">
+    <thead>
+        <tr>
+            <th *ngIf="enableCheckbox" class="column-checkbox">
+                <input class="checkbox" type="checkbox" [(ngModel)]="checkAll" (ngModelChange)="selectAll()"
+                    [attr.disabled]="isLoading ? '' : null" />
+            </th>
+            <th *ngFor="let column of columnDef; let c = index;">{{ column.label | translate }}</th>
+            <th *ngIf="columnActions && columnActions.length > 0" style="text-align: center; min-width: 110px; max-width: 110px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of data; let i = index;">
+            <td *ngIf="enableCheckbox"><input class="checkbox" type="checkbox" [value]="row.id"
+                    [(ngModel)]="checked[row.id]" (ngModelChange)="setCheckAll()"
+                    [attr.disabled]="isLoading ? '' : null" /></td>
+            <td *ngFor="let column of columnDef; let c = index;" [ngSwitch]="column.type">
+                <ng-container *ngSwitchCase="'link'">
+                    <a class="link"
+                        [routerLink]="[column.link, getFieldValue(row, column.linkParam, column.linkParamIsNested)]"
+                        routerLinkActive="router-link-active"
+                        [class.disabled]="isLoading">{{ getFieldValue(row, column.field, column.isNested) }}</a>
+                </ng-container>
+                <ng-container *ngSwitchCase="'date'">
+                    {{ getFieldValue(row, column.field, column.isNested) | date:column.date }}
+                </ng-container>
+                <ng-container *ngSwitchCase="'number'">
+                    {{ getFieldValue(row, column.field, column.isNested) | number:column.number }}
+                </ng-container>
+                <ng-container *ngSwitchCase="'collection'">
+                    {{ collection[column.collection][getFieldValue(row, column.field, column.isNested)] | translate }}
+                </ng-container>
+                <ng-container *ngSwitchCase="'template'">
+                    <template [ngTemplateOutlet]="templates[column.template]"
+                        [ngTemplateOutletContext]="{ row: row }"></template>
+                </ng-container>
+                <ng-container *ngSwitchDefault>
+                    {{ getFieldValue(row, column.field, column.isNested) }}
+                </ng-container>
+            </td>
+            <td *ngIf="columnActions && columnActions.length > 0" style="text-align: center; min-width: 110px; max-width: 110px;">
+                <div class="btn-group">
+                    <a class="btn btn-default btn-small dropdown-toggle" [class.disabled]="isLoading || countActiveActions(row) === 0" data-toggle="dropdown">
+                        <fa-icon icon="layer-group" style="margin-right: 4px;"></fa-icon>{{ "global.label.rowActions" | translate }}
+                        <span class="caret" style="margin-left: 4px"></span>
+                    </a>
+                    <ul class="dropdown-menu pull-right" style="text-align: left;">
+                        <ng-container *ngFor="let action of columnActions">
+                            <li *ngIf="(action.condition && action.condition(row)) || !action.condition" class="pointer"
+                                (click)="emitAction(action.fn, row)">
+                                <a>
+                                    <fa-icon *ngIf="action.icon" [icon]="action.icon" style="margin-right: 4px;">
+                                    </fa-icon>
+                                    {{ action.label | translate }}
+                                </a>
+                            </li>
+                        </ng-container>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        <tr *ngIf="data && data.length === 0" style="height: 100%;">
+            <td class="text-center no-border p-0"
+                [attr.colspan]="columnDef.length + (columnActions ? 1 : 0) + (enableCheckbox ? 1 : 0) ">
+                <div style="margin-top: 20px; margin-bottom: 20px;">
+                    <div class="text-center">
+                        <i class="fa fa-exclamation-triangle fa-2x icon-warning icon-centered blinking"
+                            style="margin-bottom: 15px;"></i><br>
+                        <span>No Records</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

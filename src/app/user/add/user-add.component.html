@@ -1,0 +1,141 @@
+<app-breadcrumbs [breadcrumbs]="breadcrumbs"></app-breadcrumbs>
+
+<div class="content container-fluid" id="home">
+  <div class="accordion" id="accordion-send">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-target="#collapse01" data-parent=".accordion-group">
+          <i class="icon-chevron-down" style="margin-right: 4px;"></i>
+          <strong>{{ 'user.add.title' | translate }}</strong>
+        </a>
+      </div>
+      <div id="collapse01" class="accordion-body collapse in">
+        <div class="accordion-inner">
+          <div class="input-mask">
+            <form [formGroup]="userForm" (ngSubmit)="save()">
+              <table cellpadding="0" cellspacing="0" class="form-group">
+                <tbody>
+                  <tr>
+                    <td>{{ 'user.add.field.username' | translate }}:</td>
+                    <td>
+                      <input type="text" formControlName="username" class="app-input required" required><span
+                        class="asterisk">*</span>
+                      <div class="validation">
+                        <app-form-validation-message [form]="userForm" fieldName="username">
+                        </app-form-validation-message>
+                      </div>
+                    </td>
+                    <td>{{ 'user.add.field.email' | translate }}:</td>
+                    <td>
+                      <input type="text" formControlName="email" class="app-input required" required><span
+                        class="asterisk">*</span>
+                      <div class="validation">
+                        <app-form-validation-message [form]="userForm" fieldName="email">
+                        </app-form-validation-message>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{ 'user.add.field.firstName' | translate }}:</td>
+                    <td>
+                      <input type="text" formControlName="firstName" class="app-input ">
+                      <div class="validation">
+                        <app-form-validation-message [form]="userForm" fieldName="firstName">
+                        </app-form-validation-message>
+                      </div>
+                    </td>
+                    <td>{{ 'user.add.field.lastName' | translate }}:</td>
+                    <td>
+                      <input type="text" formControlName="lastName" class="app-input ">
+                      <div class="validation">
+                        <app-form-validation-message [form]="userForm" fieldName="lastName">
+                        </app-form-validation-message>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">
+                      <hr>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{ 'user.add.field.role' | translate }}:</td>
+                    <td>
+                      <select formControlName="roleId" required>
+                        <option [value]="0">{{ 'user.add.role.encoder' | translate }}
+                        </option>
+                        <option [value]="1">{{ 'user.add.role.lab' | translate }}
+                        </option>
+                        <option [value]="2">{{ 'user.add.role.admin' | translate }}
+                        </option>
+                      </select>
+                      <span class="asterisk">*</span>
+                      <div class="validation">
+                        <app-form-validation-message [form]="userForm" fieldName="roleId">
+                        </app-form-validation-message>
+                      </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td style="position: relative; height: 20px;"></td>
+                    <td style="position: relative; height: 20px;">
+                      <a class="show-icon" (click)="showPassword = !showPassword">
+                        <ng-container *ngIf="!showPassword">
+                          <fa-icon [icon]="'eye'"></fa-icon> {{ 'global.action.show' | translate }}
+                        </ng-container>
+                        <ng-container *ngIf="showPassword">
+                          <fa-icon [icon]="'eye-slash'"></fa-icon> {{ 'global.action.hide' | translate }}
+                        </ng-container>
+                      </a>
+                    </td>
+                    <td style="position: relative; height: 20px;"></td>
+                    <td style="position: relative; height: 20px;"></td>
+                  </tr>
+                  <tr>
+                    <td>{{ 'user.add.field.password' | translate }}: </td>
+                    <td>
+                      <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                        class="app-input required" required><span class="asterisk">*</span>
+                      <div class="validation">
+                        <app-form-validation-message [form]="userForm" fieldName="password">
+                        </app-form-validation-message>
+                      </div>
+                    </td>
+                    <td>{{ 'user.add.field.repeatPassword' | translate }}:</td>
+                    <td>
+                      <input [type]="showPassword ? 'text' : 'password'" formControlName="passwordConfirmation"
+                        class="app-input required" required><span class="asterisk">*</span>
+                      <div class="validation">
+                        <app-form-validation-message [form]="userForm" fieldName="passwordConfirmation">
+                        </app-form-validation-message>
+                        <small
+                          *ngIf="userForm.get('passwordConfirmation').value !== userForm.get('password').value && userForm.get('passwordConfirmation').dirty"
+                          class="text-danger">
+                          {{ 'global.validation.passwordNotMatch' | translate }}
+                        </small>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <button type="submit" class="btn btn-standard"
+                [attr.disabled]="isLoading || userForm.invalid ? '' : null">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                  *ngIf="isLoading"></span>
+                <span *ngIf="isLoading" style="margin-right: 8px;"></span>
+                <i *ngIf="!isLoading" class="icon-check icon-white"></i>
+                {{ 'global.action.save' | translate }}
+              </button>
+              <a type="button" class="btn btn-standard" (click)="backToList()"><i
+                  class="icon-arrow-left icon-white"></i>
+                {{ 'global.action.backToList' | translate }}
+              </a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

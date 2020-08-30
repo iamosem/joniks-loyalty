@@ -1,0 +1,41 @@
+<form name="deactivateForm" (ngSubmit)="confirmDeactivate()" style="margin: 0;">
+    <div class="modal-header">
+        <div class="row" style="margin: 0;">
+            <div class="col12" style="padding: 4px;">
+                <span class="header">{{ 'user.deactivate.title' | translate }}</span>
+            </div>
+        </div>
+        <button type="button" class="close font-size-xl" data-dismiss="modal" aria-hidden="true"
+            (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body" style="padding: 5px;">
+        <div *ngIf="errorMessage" class="row-fluid" style="margin: 0;">
+            <div class="span12 message block danger">
+                <span>{{ errorMessage }}</span>
+            </div>
+        </div>
+        <div class="row-fluid" style="margin: 0;">
+            <div class="span2" style="padding: 1rem;">
+                <i class="fa fa-exclamation-triangle fa-3x icon-warning blinking"></i>
+            </div>
+            <div class="span10" style="padding: 1rem;">
+                <span>{{ 'user.deactivate.question' | translate }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row" style="margin: 0;">
+            <div class="col12" style="text-align: right">
+                <button type="submit" id="save-entity" class="btn btn-danger" [attr.disabled]="isLoading ? '' : null">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                        *ngIf="isLoading"></span>
+                    <span *ngIf="isLoading" style="margin-right: 8px;"></span>
+                    <span>{{ 'global.action.deactivate' | translate }}</span>
+                </button>
+                <button type="button" id="cancel-save" class="btn" (click)="clear()">
+                    <span class="font-size-xs text-muted">{{ 'global.action.cancel' | translate }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

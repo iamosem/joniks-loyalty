@@ -1,0 +1,98 @@
+<form name="notificationForm" style="margin: 0;">
+    <div class="modal-header">
+        <div class="row" style="margin: 0;">
+            <div class="col12" style="padding: 4px;">
+                <span class="header">{{ 'global.notification.title' | translate }}</span>
+            </div>
+        </div>
+        <button type="button" class="close font-size-xl" data-dismiss="modal" aria-hidden="true"
+            (click)="close()">&times;</button>
+    </div>
+    <div class="modal-body" style="padding: 5px;">
+        <div class="row-fluid" style="margin: 0;">
+            <div class="span2" style="padding: 1rem;">
+                <i class="fa fa-exclamation-triangle fa-3x blinking"
+                    [ngClass]="{ 'icon-info' : type ==='info', 'icon-warning' : type === 'warning', 'icon-danger' : type === 'danger', 'icon-success' : type === 'success' }"></i>
+            </div>
+            <div class="span10"
+                [ngClass]="{ 'text-warning' : type === 'warning', 'text-danger' : type === 'danger', 'text-success' : type === 'success' }"
+                style="padding: 1rem;">
+                <span>{{ message }}</span>
+            </div>
+            <ng-container *ngIf="template === 'patient-info' && patientInfo">
+                <div style="padding: 0 10px;">
+                    <table style="width: 100%; margin: 20px 0; border-top: 1px solid #dedede;">
+                        <tr>
+                            <td colspan="2" style="padding: 10px 0;">
+                                <strong>{{ 'global.notification.patientInfo.title' | translate }}</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">
+                                <small>{{ 'global.notification.patientInfo.barcodeSerial' | translate }}:</small>
+                            </td>
+                            <td>
+                                {{ patientInfo.barcodeSerial }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-muted">
+                                <small>{{ 'global.notification.patientInfo.name' | translate }}:</small>
+                            </td>
+                            <td>
+                                {{ (patientInfo.lastName + ', ' + patientInfo.firstName + ' ' + patientInfo.middleName) | titlecase }}
+                            </td>
+                        </tr>
+                        <tr *ngIf="patientInfo.birthDate">
+                            <td class="text-muted">
+                                <small>{{ 'global.notification.patientInfo.birthDate' | translate }}:</small>
+                            </td>
+                            <td>
+                                {{ patientInfo.birthDate | date:'longDate' }}
+                            </td>
+                        </tr>
+                        <tr *ngIf="patientInfo.flightDetails">
+                            <td class="text-muted">
+                                <small>{{ 'global.notification.patientInfo.flightDetails' | translate }}:</small>
+                            </td>
+                            <td>
+                                {{ patientInfo.flightDetails }}</td>
+                        </tr>
+                        <tr *ngIf="patientInfo.testResultStatus">
+                            <td class="text-muted">
+                                <small>{{ 'global.notification.patientInfo.testResult' | translate }}:</small>
+                            </td>
+                            <td [ngSwitch]="patientInfo.testResultStatus">
+                                <span *ngSwitchCase="-1"> {{ 'global.notification.patientInfo.testResultStatus.notTested' | translate }} </span>
+                                <span *ngSwitchCase="0"> {{ 'global.notification.patientInfo.testResultStatus.na' | translate }} </span>
+                                <span *ngSwitchCase="1"> {{ 'global.notification.patientInfo.testResultStatus.negative' | translate }} </span>
+                                <span *ngSwitchCase="2"> {{ 'global.notification.patientInfo.testResultStatus.positive' | translate }} </span>
+                                <span *ngSwitchCase="3"> {{ 'global.notification.patientInfo.testResultStatus.equivocal' | translate }} </span>
+                                <span *ngSwitchCase="4"> {{ 'global.notification.patientInfo.testResultStatus.pendingReRun' | translate }} </span>
+                                <span *ngSwitchCase="5"> {{ 'global.notification.patientInfo.testResultStatus.pendingReExtraction' | translate }} </span>
+                                <span *ngSwitchCase="6"> {{ 'global.notification.patientInfo.testResultStatus.pendingValidation' | translate }} </span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div class="row" style="margin: 0;">
+            <div class="col12" style="text-align: right">
+                <button type="button" id="cancel-save" class="btn" (click)="close()" style="position: relative;">
+                    <ng-container *ngIf="isLoading">
+                        <span class="spinner-border spinner-border-sm text-info" role="status"
+                            aria-hidden="true"></span>
+                        <span style="margin-right: 30px;"></span>
+                        <div class="pl-1 font-size-xs text-info"
+                            style="position: absolute; top: 50%; left: 30px; z-index: 999; transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); -o-transform: translateY(-50%); -webkit-transform: translateY(-50%);">
+                            {{ countdown/1000 | number:"0.0-0" }}s</div>
+                    </ng-container>
+                    <span class="font-size-xs text-muted">{{ 'global.action.close' | translate }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

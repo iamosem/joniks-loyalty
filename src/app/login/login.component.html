@@ -1,0 +1,33 @@
+<div id="login">
+  <div class="login-box">
+    <div class="container-fluid h-100" style="padding: 0;">
+    <div class="row-fluid justify-content-center h-100">
+      <div class="logo-bg span5 h-100">
+        <h1 class="joniks-brandname" innerHTML="{{ 'global.title' | translate }}"></h1>
+        <span class="app-name">{{ ('global.appName' | translate) | uppercase }}</span>
+        <p class="copyright"><span [innerHTML]="Copyright"></span></p>
+      </div>
+      <div class="span7 h-100" style="position: relative;">
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="login-box-inner">
+            <p>{{ 'login.instructions' | translate }}</p>
+            <p style="margin: 0;"><input type="text" formControlName="username" class="app-input" placeholder="{{ 'login.field.username' | translate }}"></p>
+            <p style="margin: 0;"><input type="password" formControlName="password" class="app-input" placeholder="{{ 'login.field.password' | translate }}"></p>
+            <p *ngIf="displayError">
+              <small class="text-danger"> {{ 'login.error.loginFailed' | translate }} </small>
+            </p>
+            <p>
+              <button type="submit" class="btn btn-success" [attr.disabled]="isLoading || loginForm.invalid ? '' : null">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="isLoading"></span>
+                <span *ngIf="isLoading" style="margin-right: 8px;"></span>
+                <fa-icon *ngIf="!isLoading"  [icon]="'arrow-right'" class="icon-white" style="margin-right: 4px;"></fa-icon>
+                {{ 'login.action.signIn' | translate }}
+              </button>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

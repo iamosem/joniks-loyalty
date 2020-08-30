@@ -2,12 +2,34 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>JoniksLoyalty</title>
+  <title>Joniks Loyalty Points</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="./assets/img/joniksLOGO-ico.ico" rel="shortcut icon" type="image/x-icon">
+  <link id="angular-material-css" rel="stylesheet" type="text/css" href="assets/css/angular-material.min.css">
 </head>
 <body>
-  <app-root></app-root>
+  <app-main></app-main>
+  <noscript>
+    <h1>You must enable javascript to view this page.</h1>
+  </noscript>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '627424537915678',
+        xfbml      : true,
+        version    : 'v8.0'
+      });
+      FB.AppEvents.logPageView();
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
 </body>
 </html>

@@ -1,0 +1,39 @@
+<div id="error">
+  <div class="container">
+    <div class="span10 offset2" style="margin-top: 5em;">
+      <div class="row"></div>
+      <div class="row">
+        <div class="span3">
+          <img src="../../assets/img/warning-img.png" />
+        </div>
+        <div class="span" style="margin-top: 3em;">
+          <h3 jhiTranslate="error.title">Oops! Something is wrong.</h3>
+          <div [hidden]="!errorMessage">
+            <div class="alert alert-danger">
+              {{ errorMessage }}
+            </div>
+          </div>
+          <div
+            [hidden]="!error403"
+            class="alert alert-danger"
+            jhiTranslate="global.error.http.403"
+          >
+            You are not authorized to access this page.
+          </div>
+          <div
+            [hidden]="!error404"
+            class="form-text text-danger"
+            jhiTranslate="global.error.http.404"
+          >
+            The page does not exist.
+          </div>
+          <p>
+            <a class="btn btn-primary" style="margin-top: 1em;" (click)="login()"
+              ><i class="icon-circle-arrow-left icon-white"></i> Go back to login page</a
+            >
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
